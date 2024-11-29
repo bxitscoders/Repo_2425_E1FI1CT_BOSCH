@@ -28,12 +28,14 @@ namespace LottoStatistik
                 InitialDirectory = "C:\\Users\\QEJ1FE\\source\\repos\\github\\LottoStatistik_VORLAGE\\LottoStatistik\\"
             };
             ofd.ShowDialog();
-            try
+
+            foreach (var line in File.ReadAllLines(ofd.FileName).Select(line => line.Split(',')[1].Split('-')))
             {
-                foreach (var line in File.ReadAllLines(ofd.FileName).Select(line => line.Split(',')[1].Split('-')))
+                foreach (var item in line)
                 {
-                    foreach (int i in line.Select(int.Parse))
+                    try
                     {
+                        int i = int.Parse(item);
                         if (dict.ContainsKey(i))
                         {
                             dict[i] = dict[i] + 1;
@@ -43,9 +45,10 @@ namespace LottoStatistik
                             dict.Add(i, 1);
                         }
                     }
+                    catch (Exception) { }
                 }
             }
-            catch { }
+
 
             foreach (int key in dict.Keys)
             {
