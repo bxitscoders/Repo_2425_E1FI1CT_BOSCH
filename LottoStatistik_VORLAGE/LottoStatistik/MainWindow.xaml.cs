@@ -25,7 +25,7 @@ namespace LottoStatistik
             {
                 Filter = "CSV Files | *.csv",
                 Multiselect = false,
-                InitialDirectory = "C:\\Users\\QEJ1FE\\source\\repos\\LottoStatistik_VORLAGE\\LottoStatistik\\"
+                InitialDirectory = "C:\\Users\\QEJ1FE\\source\\repos\\github\\LottoStatistik_VORLAGE\\LottoStatistik\\"
             };
             ofd.ShowDialog();
             try
