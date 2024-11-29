@@ -8,11 +8,18 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox BorderThickness="0" Name="txbAusgabe" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible"></TextBox>
-        <Button Name="btnEinlesen" Grid.Row="1" Click="btnEinlesen_Click">Einlesen</Button>
+        <Border Grid.Row="0" Margin="0" BorderBrush="Black" BorderThickness="0,0,0,2">
+            <Label Name="lblStatistik" Content="Statistic" Padding="5" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Border>
+
+        <TextBox BorderThickness="0" Name="txbAusgabe" Grid.Row="1" 
+                 ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,0,0,0"
+                 ></TextBox>
+
+        <Button Name="btnEinlesen" Grid.Row="2" Click="btnEinlesen_Click">Einlesen</Button>
     </Grid>
-    
 </Window>
