@@ -1,0 +1,17 @@
+﻿Aufgabe
+Lesen Sie die Datei lottozahlen_archiv.csv ein. 
+(Hier für können Sie auch den Dateiauswahldialog verwenden.) 
+
+Erstellen Sie ein Array mit 49 Elementen vom Typ int. 
+Das sind die Lottozahlen, die man ziehen kann.
+
+Ermitteln Sie die Häufigkeit der gezogenen Zahlen:
+Lesen Sie jede Zeile einzeln ein. (->Schleife)
+
+Verwenden Sie eine for-Schleife um auf die 1 - 6 Zahlen einer Ziehung zuzugreifen.
+
+Beispiel:
+for (int i = 0; i < 6; i++)
+{
+    lottozahlen[Convert.ToInt32(lottoline.Split(',')[1].Split('-')[i])]++;
+}
