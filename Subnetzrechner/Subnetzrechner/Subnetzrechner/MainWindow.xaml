@@ -1,0 +1,52 @@
+﻿<Window x:Class="Subnetzrechner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Subnetzrechner"
+        mc:Ignorable="d"
+        Title="Subnetzrechner" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <DataGrid Name="dgSubnetze" Grid.Row="0" Margin="21,10,25,10" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserResizeRows="True" CanUserSortColumns="True">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="SubnetzName" Binding="{Binding SubnetzName}">
+                    
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Geräteanzahl" Binding="{Binding GeraeteAnzahl}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Subnetzmaske" Binding="{Binding _subnetzmaske}" IsReadOnly="True">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Netzadresse" Binding="{Binding Netzadresse}" IsReadOnly="True">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="mögliche Clients" Binding="{Binding AnzahlHosts}" IsReadOnly="True">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Erste Adresse" Binding="{Binding ErsteAdresse}" IsReadOnly="True">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="letzte Adresse" Binding="{Binding LetzteAdresse}" IsReadOnly="True">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Boadcastadresse" Binding="{Binding Broadcastadresse}" IsReadOnly="True">
+
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <CheckBox Grid.Row="1" Margin="10,15,25,10" Name="chbVLSM"></CheckBox>
+        <Label Grid.Row="1" Margin="30,10,25,10" Name="lblVLSM">Use VLSM</Label>
+        <Label Grid.Row="1" Margin="100,10,25,10" Name="lblStartIP">Start IP</Label>
+        <TextBox Grid.Row="1" Margin="150,10,528,10" Name="txbStartIP">111.111.111.111</TextBox>
+        <Button Grid.Row="1" Margin="610,10,25,10" Name="btnBerechne" Click="btnBerechne_Click">Berechne</Button>
+    </Grid>
+
+</Window>
