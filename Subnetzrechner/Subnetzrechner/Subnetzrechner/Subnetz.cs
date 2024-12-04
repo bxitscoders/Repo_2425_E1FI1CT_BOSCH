@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Subnetzrechner
+﻿namespace Subnetzrechner
 {
     internal class Subnetz
     {
@@ -14,14 +8,17 @@ namespace Subnetzrechner
         public string ErsteAdresse { get; set; }
         public string LetzteAdresse { get; set; }
         public string Broadcastadresse { get; set; }
-        public int AnzahlHosts { get { return _subnetzmaske.GetHosts(); }
-            set { } }
+        public int AnzahlHosts
+        {
+            get { return _subnetzmaske.GetHosts(); }
+            set { }
+        }
 
         public Subnetz()
         {
         }
 
-            public Subnetz(string netzadresse, string subnetzmaske)
+        public Subnetz(string netzadresse, string subnetzmaske)
         {
             try
             {
@@ -47,7 +44,7 @@ namespace Subnetzrechner
         public bool CheckSubnetz(IPV4 netzadresse, Subnetzmaske subnetzmaske)
         {
             List<int> hosts;
-            switch (subnetzmaske.GetHosts()+2)
+            switch (subnetzmaske.GetHosts() + 2)
             {
                 case 256:
                     hosts = new List<int> { 0 };

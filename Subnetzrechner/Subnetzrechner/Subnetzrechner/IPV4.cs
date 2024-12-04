@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Documents;
+﻿using System.Text.RegularExpressions;
 
 namespace Subnetzrechner
 {
@@ -23,7 +16,7 @@ namespace Subnetzrechner
      */
     internal class IPV4
     {
-        public int[] address {  get; set; }
+        public int[] address { get; set; }
         private int[] _tmpIPv4;
         private bool _multisteps = false;
 
@@ -35,9 +28,22 @@ namespace Subnetzrechner
         // Überprüfung, ob die IP Adresse richtig ist und trägt die IP Adresse in der Klasse ein
         private bool CheckIP(string ip)
         {
-            bool _isip = false;
-            int[] _ip = {0, 0, 0, 0};
+            if (!new Regex("\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}\\b").Match(ip.ToString().Replace(',', '.')).Success) return false;
             string[] _ipString = ip.Split('.');
+            int[] _ipAdr = new int[_ipString.Length];
+            int counter = 0;
+            foreach (var part in _ipString)
+            {
+                if (counter == 0)
+                {
+                    if (int.Parse(part) < 1) return false;
+                }
+                if (int.Parse(part) < 0 || int.Parse(part) > 255) return false;
+                _ipAdr[counter++] = int.Parse(part);
+            }
+            this.address = _ipAdr;
+            return true;
+            /*
             if (_ipString.Length == 4)
             {
                 for(int i = 0; i < 4; i++)
@@ -68,7 +74,7 @@ namespace Subnetzrechner
                 }              
                 
             }
-            return _isip;
+            return _isip;*/
         }
 
         //Gibt eine IP als String aus (Format: 192.168.0.10)
@@ -79,11 +85,11 @@ namespace Subnetzrechner
 
         public string AddOneToIPv4()
         {
-            if (!_multisteps) 
+            if (!_multisteps)
             {
-                this._tmpIPv4 = (int[])address.Clone();
+                this._tmpIPv4 = (int[]) address.Clone();
             }
-            
+
             // testen, ob die letzte Zahl 255 ist, dann auf 0 setzen und den nächsten Block erhöhen
             if (_tmpIPv4[3] == 255)
             {
@@ -124,7 +130,7 @@ namespace Subnetzrechner
 
         public string AddMultiToIPv4(int Steps)
         {
-            this._tmpIPv4 = (int[])address.Clone();
+            this._tmpIPv4 = (int[]) address.Clone();
             this._multisteps = true;
             for (int i = 0; i < Steps; i++)
             {
@@ -134,9 +140,9 @@ namespace Subnetzrechner
             return MakeString(this._tmpIPv4);
         }
 
-            public string MinusOneToIPv4()
+        public string MinusOneToIPv4()
         {
-            this._tmpIPv4 = (int[])address.Clone();
+            this._tmpIPv4 = (int[]) address.Clone();
             // testen, ob die letzte Zahl 255 ist, dann auf 0 setzen und den nächsten Block erhöhen
             if (_tmpIPv4[3] == 0)
             {

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Subnetzrechner
+﻿namespace Subnetzrechner
 {
     internal class Subnetzmaske
     {
-        public IPV4 _subnetzmaske = new IPV4( "0.0.0.0" );
+        public IPV4 _subnetzmaske = new IPV4("0.0.0.0");
         // ohne 255, da dies als Ausgangspunkt angenommen wird
-        private List<int> _moeglicheSubnetzmasken = new List<int> {0, 128, 192, 224, 240, 248, 252, 254};
+        private List<int> _moeglicheSubnetzmasken = new List<int> { 0, 128, 192, 224, 240, 248, 252, 254 };
 
         public Subnetzmaske(IPV4 _ip)
         {

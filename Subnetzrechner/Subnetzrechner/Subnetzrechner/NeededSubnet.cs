@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Subnetzrechner
+﻿namespace Subnetzrechner
 {
     internal class NeededSubnet : Subnetz
     {
         public string SubnetzName { get; set; }
         public string GeraeteAnzahl { get; set; }
 
-        public string Netzadresse { get { if (_netzadresse != null) { return _netzadresse.MakeString(_netzadresse.address); } else { return ""; } }
-                                    set { _netzadresse = new IPV4(value); } }
+        public string Netzadresse
+        {
+            get { if (_netzadresse != null) { return _netzadresse.MakeString(_netzadresse.address); } else { return ""; } }
+            set { _netzadresse = new IPV4(value); }
+        }
 
         public string Subnetzmaske
         {
@@ -26,7 +23,7 @@ namespace Subnetzrechner
         {
         }
 
-        
+
 
 
     }

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Subnetzrechner
+﻿namespace Subnetzrechner
 {
     internal class DataGridFormat
     {
         public string SubnetzName { get; set; }
         public string GeraeteAnzahl { get; set; }
-        public string Netzadresse {  get; set; }
+        public string Netzadresse { get; set; }
         public string Subnetzmaske { get; set; }
         public string ErsteAdresse { get; set; }
         public string LetzteAdresse { get; set; }

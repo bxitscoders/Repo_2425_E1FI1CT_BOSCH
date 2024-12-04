@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Subnetzrechner
+﻿namespace Subnetzrechner
 {
     internal class SubnetzVerwaltung
     {
-        public List<DataGridFormat> DataGridFormats {  get; private set; }
+        public List<DataGridFormat> DataGridFormats { get; private set; }
         public List<NeededSubnet> NeededSubnets { get; private set; }
         public bool isVLSM { get; private set; }
         public IPV4 IPV4 { get; private set; }
@@ -75,7 +69,7 @@ namespace Subnetzrechner
             int maxClients = 0;
 
             // ToDo
-            
+
             return neueSubnetzmaske;
         }
 
@@ -86,12 +80,12 @@ namespace Subnetzrechner
 
             for (int i = 0; i < 32; i++)
             {
-                if (Math.Pow(2, i) >= maxClients+2)
+                if (Math.Pow(2, i) >= maxClients + 2)
                 {
-                    maxAnzahlIP = (int)Math.Pow(2, i);
-                    int trennungNetzHost = 3 - (int)i / 8;
+                    maxAnzahlIP = (int) Math.Pow(2, i);
+                    int trennungNetzHost = 3 - (int) i / 8;
                     int modulo = (i) % 8;
-                    int trennungNetzHostZahl = 256 - (int)Math.Pow(2, modulo);
+                    int trennungNetzHostZahl = 256 - (int) Math.Pow(2, modulo);
                     for (int j = 0; j <= 3; j++)
                     {
                         if (j < trennungNetzHost)
@@ -128,7 +122,7 @@ namespace Subnetzrechner
 
         private string berechneVLSMSubnetzmaske(DataGridFormat datagrid)
         {
-            string neueSubnetzmaske;
+            string neueSubnetzmaske = "";
             int maxClients = 0;
 
             // ToDo
