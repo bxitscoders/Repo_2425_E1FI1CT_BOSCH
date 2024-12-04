@@ -34,7 +34,7 @@
             foreach (var subnetz in DataGridFormats)
             {
                 //Pruefe ob das DataGrid gesetzt ist
-                if (subnetz.AnzahlHosts.Length > 0)
+                if (subnetz.GeraeteAnzahl.Length > 0)
                 {
                     if (this.isVLSM)
                     {
@@ -45,7 +45,7 @@
                     AddSubnet(neuesSubnetz);
 
                     // Netzadresse neu bestimmen
-                    tmpNetzadresse = new IPV4(tmpNetzadresse.AddMultiToIPv4(neuesSubnetz.AnzahlHosts + 2));
+                    tmpNetzadresse = new IPV4(tmpNetzadresse.AddMultiToIPv4(int.Parse(neuesSubnetz.GeraeteAnzahl) + 2));
                 }
             }
 

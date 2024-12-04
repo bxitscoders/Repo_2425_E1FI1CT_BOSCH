@@ -13,7 +13,6 @@ namespace Subnetzrechner
             InitializeComponent();
 
             dgSubnetze.ItemsSource = subnetze.DataGridFormats;
-            new IPV4("0,0,0,0");
         }
 
         private void btnBerechne_Click(object sender, RoutedEventArgs e)
