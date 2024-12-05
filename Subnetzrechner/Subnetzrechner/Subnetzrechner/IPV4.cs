@@ -20,13 +20,14 @@ namespace Subnetzrechner
         private int[] _tmpIPv4;
         private bool _multisteps = false;
 
+        public IPV4() { }
         public IPV4(string address)
         {
             if (!CheckIP(address)) { throw new ArgumentException("Bitte richtige IP eingeben"); }
         }
 
         // Überprüfung, ob die IP Adresse richtig ist und trägt die IP Adresse in der Klasse ein
-        private bool CheckIP(string ip)
+        public bool CheckIP(string ip)
         {
             if (!new Regex("\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}\\b").Match(ip.ToString().Replace(',', '.')).Success) return false;
             string[] _ipString = ip.Split('.');
@@ -87,7 +88,7 @@ namespace Subnetzrechner
         {
             if (!_multisteps)
             {
-                this._tmpIPv4 = (int[]) address.Clone();
+                this._tmpIPv4 = (int[])address.Clone();
             }
 
             // testen, ob die letzte Zahl 255 ist, dann auf 0 setzen und den nächsten Block erhöhen
@@ -130,7 +131,7 @@ namespace Subnetzrechner
 
         public string AddMultiToIPv4(int Steps)
         {
-            this._tmpIPv4 = (int[]) address.Clone();
+            this._tmpIPv4 = (int[])address.Clone();
             this._multisteps = true;
             for (int i = 0; i < Steps; i++)
             {
@@ -142,7 +143,7 @@ namespace Subnetzrechner
 
         public string MinusOneToIPv4()
         {
-            this._tmpIPv4 = (int[]) address.Clone();
+            this._tmpIPv4 = (int[])address.Clone();
             // testen, ob die letzte Zahl 255 ist, dann auf 0 setzen und den nächsten Block erhöhen
             if (_tmpIPv4[3] == 0)
             {

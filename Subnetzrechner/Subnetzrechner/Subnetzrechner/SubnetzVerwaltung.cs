@@ -24,17 +24,24 @@
 
         public void BerechneSubnetze(bool isVLSM, string IPV4)
         {
+            // Reset Subnets
+            NeededSubnets = new List<NeededSubnet>();
+
             this.isVLSM = isVLSM;
             this.IPV4 = new IPV4(IPV4);
 
             IPV4 tmpNetzadresse = this.IPV4;
             string tmpIPV4 = IPV4;
             string tmpSubnetzmaske = BerechneSubnetzmaske();
+
+            //sortiere DataGrid nach Groesse
+            DataGridFormats = DataGridFormats.OrderByDescending(o => Int32.Parse(o.GeraeteAnzahl)).ToList();
+
             // Schleife über alle Datagrids
             foreach (var subnetz in DataGridFormats)
             {
                 //Pruefe ob das DataGrid gesetzt ist
-                if (subnetz.GeraeteAnzahl.Length > 0)
+                if (subnetz.GeraeteAnzahl != null)
                 {
                     if (this.isVLSM)
                     {
@@ -45,7 +52,7 @@
                     AddSubnet(neuesSubnetz);
 
                     // Netzadresse neu bestimmen
-                    tmpNetzadresse = new IPV4(tmpNetzadresse.AddMultiToIPv4(int.Parse(neuesSubnetz.GeraeteAnzahl) + 2));
+                    tmpNetzadresse = new IPV4(tmpNetzadresse.AddMultiToIPv4(neuesSubnetz.AnzahlHosts + 2));
                 }
             }
 
@@ -68,8 +75,8 @@
             string neueSubnetzmaske = "";
             int maxClients = 0;
 
-            // ToDo
-
+            //bestimme Maximum Clients                
+            //bestimme Subnetzmaske
             return neueSubnetzmaske;
         }
 
@@ -125,7 +132,8 @@
             string neueSubnetzmaske = "";
             int maxClients = 0;
 
-            // ToDo
+            //bestimme Maximum Clients
+            //bestimme Subnetzmaske
 
             return neueSubnetzmaske;
         }
